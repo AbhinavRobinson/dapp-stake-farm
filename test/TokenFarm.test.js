@@ -19,7 +19,7 @@ contract("TokenFarm", ([owner, investor]) => {
     // Load Contracts
     daiToken = await DaiToken.new();
     mastiToken = await MastiToken.new();
-    tokenToken = await TokenFarm.new(mastiToken.address, daiToken.address);
+    tokenFarm = await TokenFarm.new(mastiToken.address, daiToken.address);
 
     // Transfer all Masti Token to TokenFarm
     await mastiToken.transfer(tokenFarm.address, tokens("1000000"));
@@ -32,6 +32,25 @@ contract("TokenFarm", ([owner, investor]) => {
     it("has a name", async () => {
       const name = await daiToken.name();
       assert.equal(name, "Mock DAI Token");
+    });
+  });
+
+  describe("Masti Deployment", async () => {
+    it("has a name", async () => {
+      const name = await mastiToken.name();
+      assert.equal(name, "Masti Token");
+    });
+  });
+
+  describe("Token Farm Deployment", async () => {
+    it("has a name", async () => {
+      const name = await tokenFarm.name();
+      assert.equal(name, "Masti Token Farm");
+    });
+
+    it("contract has tokens", async () => {
+      let bal = await mastiToken.balanceOf(tokenFarm.address);
+      assert.equal(bal.toString(), tokens("1000000"));
     });
   });
 });
