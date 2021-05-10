@@ -2,8 +2,8 @@
 pragma solidity ^0.8.2;
 
 contract DappToken {
-    string public name = "DApp Token";
-    string public symbol = "DAPP";
+    string public name = "Masti Token";
+    string public symbol = "MSTI";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
     uint8 public decimals = 18;
 
