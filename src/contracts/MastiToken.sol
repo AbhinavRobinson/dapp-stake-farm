@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.5.0;
 
-contract DappToken {
+contract MastiToken {
     string public name = "Masti Token";
     string public symbol = "MSTI";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
