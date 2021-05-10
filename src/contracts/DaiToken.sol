@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.5.0;
 
 contract DaiToken {
     string public name = "Mock DAI Token";
@@ -18,7 +18,7 @@ contract DaiToken {
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    constructor() {
+    constructor() public {
         balanceOf[msg.sender] = totalSupply;
     }
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.5.0;
 
 contract DappToken {
     string public name = "Masti Token";
@@ -18,7 +18,7 @@ contract DappToken {
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    constructor() {
+    constructor() public {
         balanceOf[msg.sender] = totalSupply;
     }
 
