@@ -42,7 +42,20 @@ contract TokenFarm {
     }
 
     // Unstake Tokens (Withdraw)
-    // function unStakeTokens(uint256 _amount) public {}
+    // function unStakeTokens(uint256 _amount) public {
+    //     // Give Balance back to investor
+    //     daiToken.transferFrom(address(this), msg.sender, _amount);
+
+    //     // Update Staking balance
+    //     stakingBalance[msg.sender] = stakingBalance[msg.sender] - _amount;
+
+    //     if (stakingBalance[msg.sender] == 0) {
+    //         // also remove from stakers []
+    //         hasStaked[msg.sender] = false;
+    //     }
+
+    //     isStaking[msg.sender] = false;
+    // }
 
     // Issuing Tokens (Earn Intrest)
     // function issueTokens(uint256 _amount) public {}

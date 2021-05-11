@@ -53,4 +53,40 @@ contract("TokenFarm", ([owner, investor]) => {
       assert.equal(bal.toString(), tokens("1000000"));
     });
   });
+
+  describe("Farming Tokens", async () => {
+    it("rewards investors for staking mDai Tokens", async () => {
+      let result;
+
+      // check investor balance
+      result = await daiToken.balanceOf(investor);
+      assert.equal(
+        result.toString(),
+        tokens("100"),
+        "investor mDai wallet balance is correct for staking."
+      );
+
+      // Stake mDai tokens
+      await daiToken.approve(tokenFarm.address, tokens("100"), {
+        from: investor,
+      });
+      await tokenFarm.stakeTokens(tokens("100"), { from: investor });
+
+      // check token transferred.
+      result = await daiToken.balanceOf(investor);
+      assert.equal(
+        result.toString(),
+        tokens("0"),
+        "investor has transferred tokens for staking."
+      );
+
+      // check token received.
+      result = await daiToken.balanceOf(tokenFarm.address);
+      assert.equal(
+        result.toString(),
+        tokens("100"),
+        "mDai tokens from investor received."
+      );
+    });
+  });
 });
