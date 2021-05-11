@@ -87,6 +87,22 @@ contract("TokenFarm", ([owner, investor]) => {
         tokens("100"),
         "mDai tokens from investor received."
       );
+
+      // check token received.
+      result = await tokenFarm.stakingBalance(investor);
+      assert.equal(
+        result.toString(),
+        tokens("100"),
+        "TokenFarm mDai tokens from investor received in staking."
+      );
+
+      // check token received.
+      result = await tokenFarm.isStaking(investor);
+      assert.equal(
+        result.toString(),
+        "true",
+        "investor staking status is correct."
+      );
     });
   });
 });
